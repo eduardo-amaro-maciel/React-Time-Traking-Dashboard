@@ -5,8 +5,8 @@ type ActivityCardProps = {
     icon: string;
     alt: string;
     title: string;
-    timeFramePrevious: string;
-    timeFrameCurrent: string;
+    timeFramePrevious: number;
+    timeFrameCurrent: number;
 }
 
 function ActivityCard({ icon, alt, title, timeFramePrevious, timeFrameCurrent }: ActivityCardProps) {

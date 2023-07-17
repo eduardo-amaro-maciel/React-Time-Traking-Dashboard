@@ -7,28 +7,6 @@ import selfCareIcon from '../../assets/img/icon-self-care.svg';
 import studyIcon from '../../assets/img/icon-study.svg';
 import workIcon from '../../assets/img/icon-work.svg';
 
-type Timeframe = {
-    current: string;
-    previous: string;
-};
-
-type TimeframeKey = 'daily' | 'weekly' | 'monthly';
-
-type Activity = {
-    title: string;
-    timeframes: {
-        daily: Timeframe;
-        weekly: Timeframe;
-        monthly: Timeframe;
-    };
-};
-
-type ActivityContainerProps = {
-    current: TimeframeKey;
-    previous: TimeframeKey;
-    data: Activity[];
-};
-
 const icons = [
     workIcon,
     playIcon,
@@ -47,6 +25,28 @@ const iconAltText = [
     'self-care-icon',
 ];
 
+type Timeframe = {
+    current: number;
+    previous: number;
+};
+
+type Activity = {
+    title: string;
+    timeframes: {
+        daily: Timeframe;
+        weekly: Timeframe;
+        monthly: Timeframe;
+    };
+};
+
+type TimeframeKey = 'daily' | 'weekly' | 'monthly';
+
+type ActivityContainerProps = {
+    current: TimeframeKey | string;
+    previous: TimeframeKey | string;
+    data: Activity[];
+};
+
 export default function ActivityContainer({
     data,
     current,
@@ -58,8 +58,8 @@ export default function ActivityContainer({
                 <ActivityCard
                     key={index}
                     title={activity.title}
-                    timeFrameCurrent={activity.timeframes[current].current}
-                    timeFramePrevious={activity.timeframes[previous].previous}
+                    timeFrameCurrent={activity.timeframes[current as keyof typeof activity.timeframes].current}
+                    timeFramePrevious={activity.timeframes[previous as keyof typeof activity.timeframes].previous}
                     icon={icons[index]}
                     alt={iconAltText[index]}
                 />

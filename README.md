@@ -1,3 +1,3 @@
 # Time tracking dashboard solution
 
-<img src="./src/assets/img/screenshot mobile.png"  />
+<img src="./src/assets/img/screenshot- desktop.png"  />
